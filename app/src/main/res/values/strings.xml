@@ -1,3 +1,24 @@
 <resources>
-    <string name="app_name">Navegando Actividades</string>
+    <string name="app_name">Ejercicio 3: Navegando Actividades</string>
+    <string name="ivFoto">Nombre</string>
+    <string name="tvNombre">Nombre</string>
+    <string name="tvCiudad">Ciudad</string>
+    <string name="tvMatricula">Matricula</string>
+    <string name="tvExpresion">Expresion Creativa</string>
+    <string name="tvGrid">Expresion Creativa</string>
+    <string name="rbAmarillo">Amarillo</string>
+    <string name="rbNormal">Normal</string>
+    <string name="btnAtras">Atras</string>
+    <string name="chAzul">Azul</string>
+    <string name="exNOmbre">Nombre del Miembro</string>
+    <string name="lblnombre">Nombre</string>
+    <string name="exCiudad">Ciudad de Nacimiento</string>
+    <string name="exMatricula">Matricula</string>
+    <string name="exExpresion">Expresion Creativa</string>
+    <string name="btnGuardar">Guardar</string>
+    <string name="btnConsultar">Consultar</string>
+    <string name="btnEliminar">Eliminar Miembro</string>
+    <string name="btnActualizar">Actualizar Miembros</string>
+
+
 </resources>

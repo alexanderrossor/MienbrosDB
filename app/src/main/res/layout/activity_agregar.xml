@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Agregar">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/carFoto"
+        android:layout_width="190dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardCornerRadius="8sp"
+        app:cardElevation="8sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="16dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="16sp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/ivFoto"
+                android:layout_width="155dp"
+                android:layout_height="163dp"
+                android:layout_gravity="center_horizontal"
+                android:contentDescription="@null"
+                android:onClick="onClick"
+                android:src="@drawable/photograph" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <EditText
+        android:id="@+id/etNombre"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:autofillHints="Text"
+        android:gravity="center"
+        android:hint="@string/exNOmbre"
+        android:inputType="textAutoCorrect"></EditText>
+
+    <EditText
+        android:id="@+id/etCiudad"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:autofillHints="Text"
+        android:gravity="center"
+        android:hint="@string/exCiudad"
+        android:inputType="textAutoCorrect"></EditText>
+
+    <EditText
+        android:id="@+id/etMatricula"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:autofillHints="Text"
+        android:gravity="center"
+        android:hint="@string/exMatricula"
+        android:inputType="textAutoCorrect"></EditText>
+
+    <EditText
+        android:id="@+id/etExpresion"
+        android:layout_width="match_parent"
+        android:layout_height="178dp"
+        android:autofillHints="Text"
+        android:gravity="center"
+        android:hint="@string/exExpresion"
+        android:inputType="textMultiLine"
+        android:maxLines="600"
+        android:minLines="200"
+        android:selectAllOnFocus="true"
+        android:textIsSelectable="true"></EditText>
+    <Button
+        android:id="@+id/btGuardar"
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:singleLine="true"
+        android:text="@string/btnGuardar"
+        android:textStyle="bold" />
+    <Button
+        android:id="@+id/btConsultar"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:singleLine="true"
+        android:text="@string/btnConsultar"
+        android:textStyle="bold" />
+</LinearLayout>
