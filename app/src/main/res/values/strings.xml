@@ -16,9 +16,13 @@
     <string name="exMatricula">Matricula</string>
     <string name="exExpresion">Expresion Creativa</string>
     <string name="btnGuardar">Guardar</string>
-    <string name="btnConsultar">Consultar</string>
+    <string name="btnConsultar">Consultar por Nombre</string>
     <string name="btnEliminar">Eliminar Miembro</string>
     <string name="btnActualizar">Actualizar Miembros</string>
-
+    <string name="txNuevo">Nuevo</string>
+    <string name="txMiembros">Miembros</string>
+    <string name="txEliminar">Eliminar</string>
+    <string name="txActualizar">Actualizar</string>
+    <string name="btCarFoto">Buscar Foto</string>
 
 </resources>

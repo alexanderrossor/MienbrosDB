@@ -79,6 +79,15 @@
         android:selectAllOnFocus="true"
         android:textIsSelectable="true"></EditText>
     <Button
+        android:id="@+id/btCargarFoto"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:singleLine="true"
+        android:text="@string/btCarFoto"
+        android:textStyle="bold" />
+    <Button
         android:id="@+id/btGuardar"
         android:layout_width="match_parent"
         android:layout_height="41dp"
@@ -87,13 +96,5 @@
         android:singleLine="true"
         android:text="@string/btnGuardar"
         android:textStyle="bold" />
-    <Button
-        android:id="@+id/btConsultar"
-        android:layout_width="match_parent"
-        android:layout_height="38dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:singleLine="true"
-        android:text="@string/btnConsultar"
-        android:textStyle="bold" />
+
 </LinearLayout>

@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -34,13 +35,14 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.InputStream;
+import java.nio.channels.ScatteringByteChannel;
 
 public class Agregar extends AppCompatActivity {
     ConexionSQLiteHerper mDataBaseHerper;
 
     EditText   nombre, ciudad, matricula, expresion;
     ImageView imagen;
-    Button btnGuardar, btnConsultar;
+    Button btnGuardar, btCargarFoto;
     SqliteHerper conn = new SqliteHerper(this, "miembrosdb", null,1);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,16 +52,16 @@ public class Agregar extends AppCompatActivity {
         mDataBaseHerper=new ConexionSQLiteHerper(this,"miembrosdb",null,1);
         imagen = (ImageView) findViewById(R.id.ivFoto);
         btnGuardar = (Button) findViewById(R.id.btGuardar);
-        btnConsultar = (Button) findViewById(R.id.btConsultar);
+        btCargarFoto = (Button) findViewById(R.id.btCargarFoto);
         nombre = (EditText) findViewById(R.id.etNombre);
         ciudad = (EditText) findViewById(R.id.etCiudad);
         matricula = (EditText) findViewById(R.id.etMatricula);
         expresion = (EditText) findViewById(R.id.etExpresion);
-        btnConsultar.setOnClickListener(new View.OnClickListener() {
+        btCargarFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+        cargarimagen();
 
-                Consultademiembros();
             }
         });
         btnGuardar.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +74,9 @@ public class Agregar extends AppCompatActivity {
                 String NewExpresion = expresion.getText().toString();
                 byte[] NewEntryIma = ImageViewtoByte(imagen);
                 AddData(Newname, NewCiudad, NewMatricula, NewExpresion, NewEntryIma);
+                Toast.makeText(Agregar.this, "Miembro agregado", Toast.LENGTH_SHORT).show();
+                limpiar();
+
             }
         });
     }
@@ -82,21 +87,7 @@ public class Agregar extends AppCompatActivity {
         byte[] bytesArray = stream.toByteArray();
         return  bytesArray;
     }
-    private void Consultademiembros() {
-        SQLiteDatabase db = conn.getReadableDatabase();
-        String [] parametro = {nombre.getText().toString()};
-        try {
-            Cursor cursor = db.rawQuery(" SELECT " + Utilidades.CAMPO_CIUDAD + " , " + Utilidades.CAMPO_MATRICULA + " , " + Utilidades.CAMPO_EXPRESION +
-                    " FROM " + Utilidades.TABLA_MIEMBRO + " WHERE " + Utilidades.CAMPO_NOMBRE + " =? ", parametro);
-            cursor.moveToFirst();
-            ciudad.setText(cursor.getString(0));
-            matricula.setText(cursor.getString(1));
-            expresion.setText(cursor.getString(2));
-        }catch (Exception e){
-            Toast.makeText(getApplicationContext(), "Ese miembro no existe", Toast.LENGTH_SHORT).show();
-            limpiar();
-        }
-    }
+
     public void onClick(View view)
     {
         cargarimagen();
@@ -104,7 +95,7 @@ public class Agregar extends AppCompatActivity {
     private void cargarimagen(){
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setType("image/");
-        startActivityForResult(Intent.createChooser(intent,"Selecionar aplicacion"),20);
+        startActivityForResult(Intent.createChooser(intent,"Selecionar aplicacion"),10);
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -123,6 +114,7 @@ public class Agregar extends AppCompatActivity {
         ciudad.setText("");
         matricula.setText("");
         expresion.setText("");
+        imagen.setImageBitmap(null);
     }
 
 }

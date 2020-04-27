@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Eliminar"></activity>
+
         <activity android:name=".Principal">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -51,7 +51,7 @@
         </activity>
         <activity
             android:name=".Ajuste"
-            android:label="Ajuste de color"
+            android:label="Actualizar Miembros"
             android:parentActivityName=".Principal">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -73,6 +73,20 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.Agregar" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Eliminar"
+            android:label="Eliminar Miembros"
+            android:parentActivityName=".Principal">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Principal" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.Eliminar" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>

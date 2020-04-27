@@ -33,7 +33,7 @@
         android:layout_height="225dp"
         android:layout_gravity="center"
         android:contentDescription="@null"
-        android:src="@drawable/alexander" />
+        android:src="@drawable/ic_launcher_background" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

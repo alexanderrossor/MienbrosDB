@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -16,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.membersbdapp.Utilidades.Utilidades;
+
+import java.io.ByteArrayInputStream;
 
 public class Eliminar extends AppCompatActivity {
     ImageView imgFoto;
@@ -55,6 +59,7 @@ public class Eliminar extends AppCompatActivity {
         db.delete(Utilidades.TABLA_MIEMBRO, Utilidades.CAMPO_NOMBRE+"=?", parametro);
         Toast.makeText(getApplicationContext(), "Registro de Miembro Eliminado", Toast.LENGTH_SHORT).show();
         db.close();
+        limpiar();
 
     }
 
@@ -62,12 +67,17 @@ public class Eliminar extends AppCompatActivity {
         SQLiteDatabase db = conn.getReadableDatabase();
         String [] parametro = {nombre.getText().toString()};
         try {
-            Cursor cursor = db.rawQuery(" SELECT " + Utilidades.CAMPO_CIUDAD + " , " + Utilidades.CAMPO_MATRICULA + " , " + Utilidades.CAMPO_EXPRESION +
+            Cursor cursor = db.rawQuery(" SELECT " + Utilidades.CAMPO_CIUDAD + " , " + Utilidades.CAMPO_MATRICULA + " , " + Utilidades.CAMPO_EXPRESION +" , " + Utilidades.CAMPO_FOTO +
                     " FROM " + Utilidades.TABLA_MIEMBRO + " WHERE " + Utilidades.CAMPO_NOMBRE + " =? ", parametro);
             cursor.moveToFirst();
             ciudad.setText(cursor.getString(0));
             matricula.setText(cursor.getString(1));
             expresion.setText(cursor.getString(2));
+            byte[] blob = cursor.getBlob(3);
+            ByteArrayInputStream bais = new ByteArrayInputStream(blob);
+            Bitmap bitmap = BitmapFactory.decodeStream(bais);
+            imgFoto.setImageBitmap(bitmap);
+
         }catch (Exception e){
             Toast.makeText(getApplicationContext(), "Ese miembro no existe", Toast.LENGTH_SHORT).show();
             limpiar();
@@ -79,5 +89,6 @@ public class Eliminar extends AppCompatActivity {
         ciudad.setText("");
         matricula.setText("");
         expresion.setText("");
+        imgFoto.setImageBitmap(null);
     }
 }

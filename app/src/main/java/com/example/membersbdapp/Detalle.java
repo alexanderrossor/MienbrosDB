@@ -2,22 +2,25 @@ package com.example.membersbdapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ClipData;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+
 public class Detalle extends AppCompatActivity {
     private Miembros Item;
-    private ImageView imgFoto;
+    ImageView imgFoto;
     private TextView txNombre, txCiudad, txMatricula, txExpresion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle);
-
-        Item  = (Miembros) getIntent().getSerializableExtra("objetoData");
-
         imgFoto = (ImageView) findViewById(R.id.imgFoto);
         txNombre = (TextView) findViewById(R.id.txNombre);
         txCiudad = (TextView) findViewById(R.id.txciudad);
@@ -25,9 +28,6 @@ public class Detalle extends AppCompatActivity {
         txExpresion = (TextView) findViewById(R.id.txExpresion);
 
 
-        txNombre.setText(Item.getNombre());
-        txCiudad.setText(Item.getCiudad());
-        txMatricula.setText(Item.getMatricula());
-        txExpresion.setText(Item.getExpresion());
+
     }
 }

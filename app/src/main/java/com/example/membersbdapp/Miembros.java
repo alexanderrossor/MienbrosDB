@@ -1,7 +1,6 @@
 package com.example.membersbdapp;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 
 import java.io.Serializable;
 
@@ -10,7 +9,6 @@ public class Miembros implements Serializable {
     private String ciudad;
     private String matricula;
     private String expresion;
-
     private Bitmap imagen;
 
 
@@ -27,7 +25,6 @@ public class Miembros implements Serializable {
     }
     public Bitmap getImagen() {
         return imagen;
-
     }
 
     public void setImagen(Bitmap imagen) {
